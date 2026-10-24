@@ -1,383 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Soluciones profesionales para hacer crecer tu negocio. Atención personalizada, asesoría y acompañamiento.">
-  <meta name="theme-color" content="#123c35">
-  <title>Norte Estudio | Soluciones para tu negocio</title>
-  <style>
-    :root {
-      --forest: #123c35;
-      --forest-2: #1d5a4d;
-      --cream: #f7f5ef;
-      --paper: #fffefa;
-      --gold: #d7b779;
-      --ink: #1c2925;
-      --muted: #64716b;
-      --line: #e4e6df;
-      --success: #216b48;
-      --shadow: 0 18px 50px rgba(18, 60, 53, .09);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    a { color: inherit; }
-    button, input, textarea, select { font: inherit; }
-    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
-    .topbar { background: var(--forest); color: #f6f4ec; font-size: .83rem; }
-    .topbar .container { min-height: 38px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .topbar a { text-decoration: none; color: #f2dba9; }
-    header { position: sticky; top: 0; z-index: 20; background: rgba(255,254,250,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(228,230,223,.9); }
-    .nav { min-height: 78px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
-    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
-    .brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: var(--forest); color: var(--gold); font-weight: 800; font-size: 1.1rem; letter-spacing: -.06em; }
-    .brand-name { font-size: 1.02rem; font-weight: 800; letter-spacing: .07em; line-height: 1.1; }
-    .brand-sub { display: block; color: var(--muted); font-size: .68rem; font-weight: 600; letter-spacing: .15em; margin-top: 4px; }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { text-decoration: none; color: #3c4943; font-size: .94rem; font-weight: 650; }
-    .nav-links a:hover { color: var(--forest-2); }
-    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; border: 1px solid transparent; border-radius: 9px; padding: 12px 19px; background: var(--forest); color: white; font-weight: 750; text-decoration: none; cursor: pointer; transition: transform .2s, background .2s; }
-    .btn:hover { background: var(--forest-2); transform: translateY(-1px); }
-    .btn-gold { background: var(--gold); color: #182c26; }
-    .btn-gold:hover { background: #e4c98e; }
-    .btn-outline { background: transparent; border-color: #aebdb5; color: var(--forest); }
-    .btn-outline:hover { background: #edf3ee; }
-    .hero { overflow: hidden; position: relative; background: var(--cream); }
-    .hero::before { content: ""; position: absolute; width: 520px; height: 520px; border: 1px solid rgba(18,60,53,.09); border-radius: 50%; right: -160px; top: -230px; box-shadow: 0 0 0 50px rgba(18,60,53,.025), 0 0 0 100px rgba(18,60,53,.02); }
-    .hero-grid { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 60px; padding-block: 88px 96px; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--forest-2); font-size: .78rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
-    .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--gold); }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 650px; margin: 17px 0 22px; color: var(--forest); font-size: clamp(2.6rem, 5.2vw, 4.65rem); letter-spacing: -.055em; line-height: 1.06; }
-    h1 em { color: var(--forest-2); font-family: Georgia, serif; font-weight: 500; }
-    .hero-copy { max-width: 570px; color: var(--muted); font-size: 1.1rem; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-    .proof { display: flex; align-items: center; gap: 13px; margin-top: 32px; color: var(--muted); font-size: .87rem; }
-    .proof-icons { display: flex; }
-    .proof-icons span { display: grid; place-items: center; width: 31px; height: 31px; margin-left: -6px; border: 2px solid var(--cream); border-radius: 50%; background: #dce8dc; font-size: .8rem; }
-    .proof-icons span:first-child { margin-left: 0; }
-    .hero-art { position: relative; min-height: 430px; display: flex; align-items: center; justify-content: center; }
-    .art-card { position: relative; width: min(100%, 400px); min-height: 390px; border-radius: 180px 180px 22px 22px; overflow: hidden; background: linear-gradient(150deg, #dce6d7, #a9c1ad 45%, #527d6d); box-shadow: var(--shadow); }
-    .sun { position: absolute; width: 145px; height: 145px; border-radius: 50%; top: 57px; right: 60px; background: #e8d3a4; }
-    .hill { position: absolute; bottom: -30px; border-radius: 50% 50% 0 0; }
-    .hill-one { width: 430px; height: 210px; left: -95px; background: #315f50; transform: rotate(-12deg); }
-    .hill-two { width: 370px; height: 170px; right: -100px; bottom: -18px; background: #1b4b40; transform: rotate(14deg); }
-    .art-leaf { position: absolute; z-index: 2; font-size: 5.5rem; filter: drop-shadow(0 8px 10px rgba(0,0,0,.12)); }
-    .leaf-one { left: 70px; top: 115px; transform: rotate(-22deg); }
-    .leaf-two { right: 60px; bottom: 55px; transform: rotate(28deg); font-size: 4.5rem; }
-    .floating-note { position: absolute; z-index: 3; bottom: 22px; left: -28px; max-width: 225px; padding: 17px 20px; border: 1px solid #edf0e8; border-radius: 13px; background: var(--paper); box-shadow: var(--shadow); }
-    .floating-note strong { display: block; color: var(--forest); font-size: .95rem; }
-    .floating-note span { color: var(--muted); font-size: .8rem; }
-    .section { padding-block: 88px; }
-    .section-soft { background: #f8f8f3; }
-    .section-head { max-width: 650px; margin: 0 auto 42px; text-align: center; }
-    .section-head .eyebrow { justify-content: center; }
-    h2 { margin: 13px 0 14px; color: var(--forest); font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -.04em; line-height: 1.16; }
-    .section-head p { color: var(--muted); margin-bottom: 0; }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .service-card { padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: white; transition: transform .2s, box-shadow .2s; }
-    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .service-icon { display: grid; place-items: center; width: 51px; height: 51px; margin-bottom: 22px; border-radius: 14px; background: #edf3ec; color: var(--forest); font-size: 1.45rem; }
-    .service-card h3 { color: var(--forest); margin-bottom: 9px; font-size: 1.15rem; }
-    .service-card p { margin-bottom: 0; color: var(--muted); font-size: .95rem; }
-    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: center; }
-    .about-panel { min-height: 355px; padding: 35px; display: flex; flex-direction: column; justify-content: flex-end; border-radius: 18px; color: white; background: linear-gradient(145deg, #1e5b4e, #102f2a); position: relative; overflow: hidden; }
-    .about-panel::before, .about-panel::after { content: ""; position: absolute; border: 1px solid rgba(215,183,121,.4); border-radius: 50%; }
-    .about-panel::before { width: 310px; height: 310px; top: -80px; right: -60px; }
-    .about-panel::after { width: 220px; height: 220px; top: -35px; right: -15px; }
-    .about-panel .big-mark { position: absolute; top: 45px; left: 35px; color: var(--gold); font: 5rem Georgia, serif; }
-    .about-panel h3 { position: relative; margin-bottom: 8px; font-size: 1.6rem; }
-    .about-panel p { position: relative; margin-bottom: 0; color: #d5e1db; }
-    .about-copy p { color: var(--muted); }
-    .check-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
-    .check-list li { display: flex; gap: 11px; align-items: flex-start; font-weight: 650; }
-    .check { color: var(--forest-2); font-weight: 900; }
-    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 55px; align-items: start; }
-    .contact-copy > p { color: var(--muted); }
-    .contact-detail { display: flex; gap: 13px; margin-top: 22px; align-items: flex-start; }
-    .contact-detail .service-icon { width: 42px; height: 42px; flex: 0 0 42px; margin: 0; font-size: 1.1rem; }
-    .contact-detail strong { display: block; color: var(--forest); }
-    .contact-detail span { color: var(--muted); font-size: .92rem; }
-    form { padding: 30px; border: 1px solid var(--line); border-radius: 17px; background: white; box-shadow: var(--shadow); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .field { margin-bottom: 17px; }
-    label { display: block; margin-bottom: 7px; font-size: .9rem; font-weight: 750; color: #34453d; }
-    input, select, textarea { width: 100%; border: 1px solid #d9dfd8; border-radius: 9px; background: #fffefa; padding: 12px 13px; color: var(--ink); outline: none; transition: border .2s, box-shadow .2s; }
-    input:focus, select:focus, textarea:focus { border-color: var(--forest-2); box-shadow: 0 0 0 3px rgba(29,90,77,.12); }
-    textarea { min-height: 125px; resize: vertical; }
-    .form-note { margin: 12px 0 0; color: var(--muted); font-size: .78rem; }
-    .status { display: none; padding: 13px 15px; margin-top: 16px; border-radius: 9px; background: #e8f4eb; color: var(--success); font-size: .9rem; }
-    .status.show { display: block; }
-    .cta-strip { padding-block: 48px; background: var(--forest); color: white; }
-    .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
-    .cta-inner h2 { color: white; margin: 0 0 8px; font-size: clamp(1.6rem, 3vw, 2.3rem); }
-    .cta-inner p { margin: 0; color: #d0dfd8; }
-    footer { padding-block: 28px; background: #0d2d28; color: #d0dfd8; font-size: .86rem; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-    footer a { color: #e7ce98; text-decoration: none; }
-    .mobile-toggle { display: none; border: 1px solid var(--line); background: white; border-radius: 8px; padding: 8px 11px; color: var(--forest); cursor: pointer; }
-    @media (max-width: 850px) {
-      .hero-grid { gap: 30px; padding-block: 65px 75px; }
-      .hero-art { min-height: 340px; }
-      .art-card { min-height: 330px; }
-      .about-grid, .contact-grid { gap: 35px; }
-      .nav-links { gap: 16px; }
-      .nav-links .btn { padding: 10px 13px; }
-    }
-    @media (max-width: 680px) {
-      .container { width: min(100% - 30px, 540px); }
-      .topbar .container { justify-content: center; text-align: center; }
-      .topbar .top-extra { display: none; }
-      .nav { min-height: 68px; flex-wrap: wrap; }
-      .mobile-toggle { display: block; }
-      .nav-links { display: none; width: 100%; padding: 0 0 17px; flex-direction: column; align-items: stretch; gap: 0; }
-      .nav-links.open { display: flex; }
-      .nav-links a { padding: 11px 4px; border-top: 1px solid var(--line); }
-      .nav-links .btn { margin-top: 8px; }
-      .hero-grid { grid-template-columns: 1fr; padding-block: 55px 65px; gap: 28px; }
-      h1 { font-size: clamp(2.5rem, 12vw, 3.65rem); }
-      .hero-copy { font-size: 1rem; }
-      .hero-art { min-height: 310px; margin-inline: 10px; }
-      .art-card { min-height: 300px; width: 88%; }
-      .sun { width: 110px; height: 110px; right: 35px; top: 45px; }
-      .leaf-one { left: 30px; top: 85px; font-size: 4rem; }
-      .leaf-two { right: 30px; bottom: 45px; font-size: 3.5rem; }
-      .floating-note { left: -8px; bottom: 9px; }
-      .section { padding-block: 62px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card { padding: 24px; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .about-panel { min-height: 280px; }
-      .form-row { grid-template-columns: 1fr; gap: 0; }
-      form { padding: 22px; }
-      .cta-inner, .footer-inner { align-items: flex-start; flex-direction: column; }
-      .cta-inner .btn { width: 100%; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; }
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090b13">
+<meta name="description" content="NOVA — soluciones digitales y estrategia para negocios con visión de futuro.">
+<title>NOVA — Impulsa lo que sigue</title>
+<style>
+:root{--bg:#090b13;--panel:#111522;--text:#f6f7fb;--muted:#a2abc0;--line:rgba(255,255,255,.12);--lime:#c8ff5f;--violet:#a998ff;--cyan:#79e8f2}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:radial-gradient(ellipse at 80% 0%,rgba(92,75,200,.15),transparent 35%),radial-gradient(ellipse at 0% 50%,rgba(42,198,202,.07),transparent 32%),var(--bg);color:var(--text);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}button,input,textarea,select{font:inherit}.container{width:min(1160px,calc(100% - 44px));margin-inline:auto}
+.topline{border-bottom:1px solid var(--line);color:var(--muted);font-size:.78rem;letter-spacing:.06em}.topline .container{display:flex;justify-content:space-between;gap:15px;padding-block:9px}.live{display:inline-flex;align-items:center;gap:8px}.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+header{position:sticky;top:0;z-index:20;background:rgba(9,11,19,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-size:1.2rem;font-weight:900;letter-spacing:.12em}.brand-icon{display:grid;place-items:center;width:37px;height:37px;border-radius:12px;color:#10130d;background:var(--lime);font-size:1rem;transform:rotate(-5deg)}.brand small{display:block;margin-top:-4px;color:var(--muted);font-size:.59rem;font-weight:700;letter-spacing:.18em}.nav-links{display:flex;align-items:center;gap:29px}.nav-links a{color:#c7ccda;text-decoration:none;font-size:.9rem;font-weight:600}.nav-links a:hover{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid transparent;border-radius:999px;padding:12px 19px;background:var(--lime);color:#11150c;font-weight:850;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,255,95,.16)}.btn-quiet{background:transparent;border-color:var(--line);color:var(--text)}.btn-quiet:hover{background:rgba(255,255,255,.06);box-shadow:none}.btn-violet{background:var(--violet);color:#121020}.menu-toggle{display:none;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);cursor:pointer}
+.hero{position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:620px;height:620px;border:1px solid rgba(169,152,255,.2);border-radius:50%;right:-130px;top:-150px;box-shadow:0 0 0 55px rgba(169,152,255,.025),0 0 0 110px rgba(169,152,255,.02);pointer-events:none}.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:45px;padding-block:92px 100px}.kicker{display:inline-flex;align-items:center;gap:9px;color:var(--lime);font-size:.76rem;font-weight:850;letter-spacing:.16em;text-transform:uppercase}h1{margin:20px 0 23px;max-width:700px;font-size:clamp(3.1rem,6.6vw,6.3rem);line-height:.99;letter-spacing:-.075em}.gradient-text{background:linear-gradient(100deg,var(--lime),var(--cyan) 53%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.hero-copy{max-width:560px;color:var(--muted);font-size:1.12rem}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.hero-foot{display:flex;align-items:center;gap:12px;margin-top:32px;color:var(--muted);font-size:.83rem}.mini-avatars{display:flex}.mini-avatars span{display:grid;place-items:center;width:29px;height:29px;margin-left:-6px;border:2px solid var(--bg);border-radius:50%;color:#111;font-size:.7rem;font-weight:900;background:var(--cyan)}.mini-avatars span:nth-child(2){background:var(--violet)}.mini-avatars span:nth-child(3){background:var(--lime)}.mini-avatars span:first-child{margin-left:0}
+.visual{position:relative;min-height:455px;display:grid;place-items:center}.orbital{position:absolute;width:min(100%,450px);aspect-ratio:1;border:1px solid rgba(255,255,255,.13);border-radius:50%;animation:slowspin 28s linear infinite}.orbital:before,.orbital:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.09);border-radius:50%;inset:35px}.orbital:after{inset:80px}.orbital-dot{position:absolute;top:48px;right:66px;width:13px;height:13px;border-radius:50%;background:var(--lime);box-shadow:0 0 24px var(--lime)}@keyframes slowspin{to{transform:rotate(360deg)}}
+.glass-card{position:relative;z-index:2;width:min(88%,350px);padding:24px;border:1px solid rgba(255,255,255,.18);border-radius:26px;background:linear-gradient(140deg,rgba(255,255,255,.12),rgba(255,255,255,.035));backdrop-filter:blur(18px);box-shadow:0 30px 90px rgba(0,0,0,.28);transform:rotate(-4deg)}.card-top{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:.76rem}.status-pill{padding:5px 9px;border:1px solid rgba(200,255,95,.3);border-radius:999px;color:var(--lime);background:rgba(200,255,95,.07);font-size:.68rem}.chart{height:145px;margin:20px 0;display:flex;align-items:end;gap:9px;padding:15px 5px 0;border-bottom:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0 35px,rgba(255,255,255,.06) 36px 37px)}.bar{flex:1;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,var(--lime),rgba(121,232,242,.45))}.bar:nth-child(1){height:30%}.bar:nth-child(2){height:42%}.bar:nth-child(3){height:37%}.bar:nth-child(4){height:62%}.bar:nth-child(5){height:55%}.bar:nth-child(6){height:78%}.bar:nth-child(7){height:94%}.metric-row{display:flex;justify-content:space-between;align-items:end;gap:12px}.metric-row strong{display:block;font-size:1.45rem;letter-spacing:-.05em}.metric-row span{color:var(--muted);font-size:.72rem}.metric-row .metric-up{color:var(--lime)}.float-chip{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;padding:13px 15px;border:1px solid var(--line);border-radius:14px;background:#151a29;box-shadow:0 15px 40px rgba(0,0,0,.25)}.float-chip.one{top:50px;right:-2px}.float-chip.two{bottom:48px;left:-4px}.chip-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;color:var(--lime);background:rgba(200,255,95,.1)}.float-chip strong{display:block;font-size:.82rem}.float-chip small{display:block;color:var(--muted);font-size:.7rem}
+.trustbar{border-block:1px solid var(--line);background:rgba(255,255,255,.018)}.trustbar .container{display:flex;align-items:center;justify-content:space-between;gap:25px;padding-block:22px}.trust-label{color:var(--muted);font-size:.78rem;max-width:160px}.trust-items{display:flex;flex-wrap:wrap;justify-content:space-between;gap:25px;color:#d2d7e3;font-size:.91rem;font-weight:800;letter-spacing:.04em}.trust-items span{opacity:.72}
+.section{padding-block:100px}.section-muted{background:rgba(255,255,255,.025);border-block:1px solid rgba(255,255,255,.05)}.section-heading{max-width:690px;margin-bottom:42px}.section-heading.center{margin-inline:auto;text-align:center}.section-heading h2{margin:15px 0;font-size:clamp(2.2rem,4.5vw,4rem);letter-spacing:-.065em;line-height:1.05}.section-heading p{color:var(--muted)}.services{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.service{min-height:265px;padding:28px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));transition:transform .2s,border-color .2s}.service:hover{transform:translateY(-5px);border-color:rgba(200,255,95,.35)}.service-icon{display:grid;place-items:center;width:48px;height:48px;margin-bottom:35px;border-radius:15px;background:rgba(200,255,95,.1);color:var(--lime);font-size:1.35rem}.service:nth-child(2) .service-icon{color:var(--violet);background:rgba(169,152,255,.12)}.service:nth-child(3) .service-icon{color:var(--cyan);background:rgba(121,232,242,.1)}.service h3{margin:0 0 10px;font-size:1.16rem}.service p{margin:0;color:var(--muted);font-size:.94rem}.service .arrow{display:inline-block;margin-top:20px;color:var(--lime);font-weight:800}
+.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;align-items:center;gap:70px}.about-art{position:relative;min-height:400px;display:grid;place-items:center;border:1px solid var(--line);border-radius:28px;background:radial-gradient(circle at 50% 42%,rgba(169,152,255,.18),transparent 48%),#101421;overflow:hidden}.about-art:before{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(169,152,255,.5);border-radius:50%;box-shadow:0 0 0 35px rgba(169,152,255,.04),0 0 0 75px rgba(169,152,255,.025)}.about-symbol{position:relative;display:grid;place-items:center;width:145px;height:145px;border:1px solid rgba(255,255,255,.3);border-radius:36px;background:linear-gradient(145deg,var(--lime),var(--cyan));color:#0c1413;font-size:4rem;font-weight:950;transform:rotate(-9deg);box-shadow:0 20px 60px rgba(121,232,242,.12)}.about-label{position:absolute;bottom:23px;left:23px;right:23px;display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.76rem;letter-spacing:.06em}.about-copy h2{margin:15px 0 20px;font-size:clamp(2.3rem,4vw,3.8rem);line-height:1.06;letter-spacing:-.06em}.about-copy p{color:var(--muted)}.features{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}.feature{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;font-weight:700}.feature b{color:var(--lime)}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;align-items:start}.contact-copy h2{margin:15px 0;font-size:clamp(2.3rem,4.4vw,4rem);line-height:1.04;letter-spacing:-.06em}.contact-copy>p{color:var(--muted)}.contact-item{display:flex;gap:12px;margin-top:24px;align-items:center;color:var(--muted);font-size:.9rem}.contact-item b{display:block;color:var(--text)}.contact-item .chip-icon{flex:0 0 40px;width:40px;height:40px}
+form{padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.025))}.form-heading{margin-bottom:22px}.form-heading h3{margin:0 0 5px;font-size:1.25rem}.form-heading p{margin:0;color:var(--muted);font-size:.87rem}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:16px}label{display:block;margin-bottom:7px;color:#dfe3ed;font-size:.85rem;font-weight:750}input,select,textarea{width:100%;border:1px solid rgba(255,255,255,.15);border-radius:11px;padding:13px 14px;outline:none;background:#0c101b;color:var(--text);transition:border-color .2s,box-shadow .2s}input::placeholder,textarea::placeholder{color:#707b92}input:focus,select:focus,textarea:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(200,255,95,.1)}select option{background:#111522}textarea{min-height:125px;resize:vertical}form .btn{width:100%;margin-top:3px}.form-note{color:var(--muted);font-size:.75rem;margin:13px 0 0}.status{display:none;margin-top:14px;padding:13px;border-radius:10px;color:var(--lime);background:rgba(200,255,95,.08);font-size:.88rem;overflow-wrap:anywhere}.status.show{display:block}
+.cta{padding-block:53px;background:linear-gradient(100deg,rgba(200,255,95,.12),rgba(169,152,255,.12));border-block:1px solid var(--line)}.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}.cta h2{margin:0 0 8px;font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-.05em}.cta p{margin:0;color:var(--muted)}footer{padding-block:27px;color:var(--muted);font-size:.82rem}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:18px}footer a{color:var(--lime);text-decoration:none}
+@media(max-width:900px){.hero-grid{gap:20px}.visual{min-height:390px}.trustbar .container{align-items:flex-start;flex-direction:column;gap:15px}.trust-label{max-width:none}.about-grid,.contact-grid{gap:35px}}
+@media(max-width:680px){.container{width:calc(100% - 32px)}.topline .container{justify-content:center;text-align:center}.right-top{display:none}.nav{min-height:68px;flex-wrap:wrap}.menu-toggle{display:block}.nav-links{display:none;width:100%;padding-bottom:17px;flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:12px 4px;border-top:1px solid var(--line)}.nav-links .btn{margin-top:10px}.hero-grid{grid-template-columns:1fr;padding-block:63px 55px}.hero h1{font-size:clamp(3.05rem,14vw,4.6rem)}.hero-copy{font-size:1rem}.visual{min-height:365px;margin-top:5px}.orbital{width:min(100%,360px)}.glass-card{width:min(84%,315px);padding:20px}.float-chip.one{top:24px;right:0}.float-chip.two{bottom:25px;left:0}.trust-items{gap:15px 22px}.section{padding-block:68px}.services{grid-template-columns:1fr}.service{min-height:auto;padding:24px}.service-icon{margin-bottom:24px}.about-grid,.contact-grid{grid-template-columns:1fr}.about-art{min-height:315px}.features{grid-template-columns:1fr}form{padding:21px}.form-row{grid-template-columns:1fr;gap:0}.cta-inner,.footer-inner{align-items:flex-start;flex-direction:column}.cta-inner .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container">
-      <span>Atención cercana. Soluciones con propósito.</span>
-      <span class="top-extra">Tu próximo paso comienza aquí · <a href="#contacto">Hablemos</a></span>
-    </div>
-  </div>
-
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#inicio" aria-label="Norte Estudio, inicio">
-        <span class="brand-mark">N.</span>
-        <span><span class="brand-name">NORTE ESTUDIO</span><span class="brand-sub">SOLUCIONES PARA TU NEGOCIO</span></span>
-      </a>
-      <button class="mobile-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menú</button>
-      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
-        <a href="#servicios">Servicios</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
-        <a class="btn" href="#contacto">Solicitar información <span aria-hidden="true">↗</span></a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Un aliado para tu crecimiento</span>
-          <h1>Tu negocio merece avanzar con <em>claridad.</em></h1>
-          <p class="hero-copy">Te ayudamos a organizar tus ideas, fortalecer tu presencia profesional y encontrar soluciones prácticas para llevar tu proyecto al siguiente nivel.</p>
-          <div class="hero-actions">
-            <a class="btn btn-gold" href="#contacto">Cuéntanos tu proyecto <span aria-hidden="true">→</span></a>
-            <a class="btn btn-outline" href="#servicios">Conoce los servicios</a>
-          </div>
-          <div class="proof">
-            <div class="proof-icons" aria-hidden="true"><span>✓</span><span>✦</span><span>↗</span></div>
-            <span>Atención personalizada, comunicación clara y enfoque práctico.</span>
-          </div>
-        </div>
-        <div class="hero-art" aria-label="Ilustración abstracta inspirada en la naturaleza">
-          <div class="art-card">
-            <div class="sun"></div>
-            <span class="art-leaf leaf-one" aria-hidden="true">🌿</span>
-            <span class="art-leaf leaf-two" aria-hidden="true">🍃</span>
-            <div class="hill hill-one"></div><div class="hill hill-two"></div>
-          </div>
-          <div class="floating-note"><strong>Ideas claras. Pasos concretos.</strong><span>Un servicio diseñado alrededor de tus objetivos.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="servicios">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Lo que hacemos</span>
-          <h2>Herramientas para construir algo sólido.</h2>
-          <p>Una selección de servicios de ejemplo que puedes adaptar a tu empresa y a las necesidades de tus clientes.</p>
-        </div>
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-icon" aria-hidden="true">◇</div>
-            <h3>Asesoría personalizada</h3>
-            <p>Conversamos sobre tus metas, identificamos prioridades y trazamos un camino práctico para avanzar con confianza.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon" aria-hidden="true">▤</div>
-            <h3>Organización y gestión</h3>
-            <p>Convierte procesos complejos en pasos claros. Te ayudamos a organizar información, tareas y oportunidades.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon" aria-hidden="true">↗</div>
-            <h3>Presencia profesional</h3>
-            <p>Comunica mejor lo que haces con una presentación coherente, una propuesta de valor clara y una experiencia cuidada.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-soft" id="nosotros">
-      <div class="container about-grid">
-        <div class="about-panel">
-          <span class="big-mark" aria-hidden="true">“</span>
-          <h3>El progreso empieza con una buena conversación.</h3>
-          <p>Menos complicaciones. Más claridad para tomar decisiones.</p>
-        </div>
-        <div class="about-copy">
-          <span class="eyebrow">Quiénes somos</span>
-          <h2>Un trato humano, con visión de futuro.</h2>
-          <p>Norte Estudio es una marca de ejemplo creada para mostrar cómo podría verse un sitio profesional. Aquí puedes contar la historia de tu empresa, explicar tu experiencia y compartir por qué los clientes confían en ti.</p>
-          <p>Creemos que las mejores soluciones parten de escuchar, comprender cada necesidad y proponer acciones realistas.</p>
-          <ul class="check-list">
-            <li><span class="check">✓</span> Comunicación directa y transparente</li>
-            <li><span class="check">✓</span> Soluciones adaptadas a cada proyecto</li>
-            <li><span class="check">✓</span> Seguimiento cercano y profesional</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contacto">
-      <div class="container contact-grid">
-        <div class="contact-copy">
-          <span class="eyebrow">Contacto</span>
-          <h2>Hablemos de lo que tienes en mente.</h2>
-          <p>Cuéntanos brevemente qué necesitas. Completa el formulario y podrás preparar un mensaje para enviarlo por tu aplicación de correo.</p>
-          <div class="contact-detail">
-            <div class="service-icon" aria-hidden="true">✉</div>
-            <div><strong>Correo electrónico</strong><span>hola@tuempresa.com (ejemplo)</span></div>
-          </div>
-          <div class="contact-detail">
-            <div class="service-icon" aria-hidden="true">◷</div>
-            <div><strong>Horario de atención</strong><span>Lunes a viernes · 9:00 a. m. – 5:00 p. m.</span></div>
-          </div>
-          <div class="contact-detail">
-            <div class="service-icon" aria-hidden="true">⌖</div>
-            <div><strong>Ubicación</strong><span>Atención local y a distancia</span></div>
-          </div>
-        </div>
-
-        <form id="contactForm">
-          <div class="form-row">
-            <div class="field">
-              <label for="name">Nombre completo *</label>
-              <input id="name" name="name" autocomplete="name" required placeholder="Tu nombre">
-            </div>
-            <div class="field">
-              <label for="email">Correo electrónico *</label>
-              <input id="email" name="email" type="email" autocomplete="email" required placeholder="tu@correo.com">
-            </div>
-          </div>
-          <div class="field">
-            <label for="service">¿En qué podemos ayudarte?</label>
-            <select id="service" name="service">
-              <option value="Consulta general">Consulta general</option>
-              <option value="Asesoría personalizada">Asesoría personalizada</option>
-              <option value="Organización y gestión">Organización y gestión</option>
-              <option value="Presencia profesional">Presencia profesional</option>
-              <option value="Otro servicio">Otro servicio</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="message">Cuéntanos un poco más *</label>
-            <textarea id="message" name="message" required placeholder="Describe brevemente tu proyecto o consulta..."></textarea>
-          </div>
-          <button class="btn" type="submit">Preparar mensaje <span aria-hidden="true">→</span></button>
-          <p class="form-note">Este formulario de demostración abre tu aplicación de correo; no almacena ni envía datos a un servidor.</p>
-          <div class="status" id="formStatus" role="status" aria-live="polite"></div>
-        </form>
-      </div>
-    </section>
-
-    <section class="cta-strip">
-      <div class="container cta-inner">
-        <div><h2>Tu siguiente gran idea puede empezar hoy.</h2><p>Conversemos y exploremos las posibilidades de tu proyecto.</p></div>
-        <a class="btn btn-gold" href="#contacto">Ponerse en contacto <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© <span id="year"></span> Norte Estudio. Todos los derechos reservados.</span>
-      <span>Diseñado con cuidado · <a href="#inicio">Volver arriba ↑</a></span>
-    </div>
-  </footer>
-
-  <script>
-    // Actualiza automáticamente el año del pie de página.
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Menú adaptable para pantallas pequeñas.
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.textContent = isOpen ? "✕ Cerrar" : "☰ Menú";
-    });
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.textContent = "☰ Menú";
-      });
-    });
-
-    // El formulario valida los campos y prepara un correo con los datos.
-    // Cambia EMAIL_DESTINO por la dirección real antes de publicar el sitio.
-    const EMAIL_DESTINO = "hola@tuempresa.com";
-    const contactForm = document.getElementById("contactForm");
-    const formStatus = document.getElementById("formStatus");
-
-    contactForm.addEventListener("submit", event => {
-      event.preventDefault();
-      if (!contactForm.reportValidity()) return;
-
-      const data = new FormData(contactForm);
-      const name = String(data.get("name")).trim();
-      const email = String(data.get("email")).trim();
-      const service = String(data.get("service")).trim();
-      const message = String(data.get("message")).trim();
-
-      const subject = encodeURIComponent("Consulta desde el sitio web — " + name);
-      const body = encodeURIComponent(
-        "Nombre: " + name + "\nCorreo: " + email + "\nServicio: " + service +
-        "\n\nMensaje:\n" + message
-      );
-
-      formStatus.textContent = "Se abrirá tu aplicación de correo con el mensaje preparado. Revisa el destinatario y envíalo desde allí.";
-      formStatus.classList.add("show");
-      window.location.href = "mailto:" + EMAIL_DESTINO + "?subject=" + subject + "&body=" + body;
-    });
-  </script>
-</body>
-</html>
+<div class="topline"><div class="container"><span class="live">ESTRATEGIA · DISEÑO · CRECIMIENTO</span><span class="right-top">Pensado para negocios con visión de futuro ↗</span></div></div>
+<header><div class="container nav">
+<a class="brand" href="#inicio" aria-label="NOVA, inicio"><span class="brand-icon">N</span><span>NOVA<small>BUSINESS STUDIO</small></span></a>
+<button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menú</button>
+<nav class="nav-links" id="navLinks" aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a><a class="btn" href="#contacto">Hablemos ↗</a></nav>
+</div></header>
+<main>
+<section class="hero" id="inicio"><div class="container hero-grid"><div>
+<span class="kicker">✳ EL FUTURO DE TU NEGOCIO EMPIEZA AQUÍ</span>
+<h1>Haz que tu próxima idea sea <span class="gradient-text">extraordinaria.</span></h1>
+<p class="hero-copy">Estrategia, creatividad y soluciones prácticas para convertir tus objetivos en resultados. Menos ruido. Más claridad. Mejor crecimiento.</p>
+<div class="hero-actions"><a class="btn" href="#contacto">Hablemos de tu proyecto ↗</a><a class="btn btn-quiet" href="#servicios">Explorar servicios ↓</a></div>
+<div class="hero-foot"><div class="mini-avatars" aria-hidden="true"><span>N</span><span>+</span><span>↗</span></div><span>Atención cercana. Ideas claras. Acción con propósito.</span></div>
+</div>
+<div class="visual" aria-label="Panel gráfico abstracto de crecimiento"><div class="orbital"><span class="orbital-dot"></span></div>
+<div class="glass-card"><div class="card-top"><span>RESUMEN DE CRECIMIENTO</span><span class="status-pill">● ENFOQUE</span></div><div class="chart" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><div class="metric-row"><div><strong>Tu siguiente nivel.</strong><span>Una estrategia a tu medida</span></div><span class="metric-up">↗ EN MARCHA</span></div></div>
+<div class="float-chip one"><span class="chip-icon">✳</span><span><strong>Ideas frescas</strong><small>Creatividad estratégica</small></span></div><div class="float-chip two"><span class="chip-icon">↗</span><span><strong>Pasos concretos</strong><small>Enfoque en tus objetivos</small></span></div></div></div></section>
+<div class="trustbar"><div class="container"><div class="trust-label">Una base sólida para avanzar</div><div class="trust-items"><span>ESTRATEGIA</span><span>DISEÑO</span><span>INNOVACIÓN</span><span>CRECIMIENTO</span><span>CONFIANZA</span></div></div></div>
+<section class="section" id="servicios"><div class="container"><div class="section-heading center"><span class="kicker">QUÉ PODEMOS HACER</span><h2>Todo empieza con una buena idea.</h2><p>Servicios de ejemplo que puedes personalizar para representar tu empresa y mostrar cómo ayudas a tus clientes.</p></div><div class="services">
+<article class="service"><div class="service-icon">✳</div><h3>Consultoría estratégica</h3><p>Define prioridades, identifica oportunidades y transforma tus objetivos en un plan claro y realista.</p><a class="arrow" href="#contacto">Exploremos →</a></article>
+<article class="service"><div class="service-icon">⌘</div><h3>Organización inteligente</h3><p>Mejora tus procesos y ordena tus ideas para dedicar más tiempo a lo que realmente importa.</p><a class="arrow" href="#contacto">Conoce más →</a></article>
+<article class="service"><div class="service-icon">↗</div><h3>Marca y presencia digital</h3><p>Comunica el valor de tu negocio con una identidad coherente y una experiencia profesional.</p><a class="arrow" href="#contacto">Hagámoslo →</a></article>
+</div></div></section>
+<section class="section section-muted" id="nosotros"><div class="container about-grid"><div class="about-art"><div class="about-symbol">N.</div><div class="about-label"><span>NOVA BUSINESS STUDIO</span><span>IDEAS → IMPACTO</span></div></div><div class="about-copy"><span class="kicker">UNA FORMA DIFERENTE DE AVANZAR</span><h2>La innovación empieza cuando ves nuevas posibilidades.</h2><p>NOVA es una marca ficticia diseñada como ejemplo de un negocio moderno. Esta sección puede contar la historia de tu empresa, presentar tu equipo y explicar qué te hace diferente.</p><p>Trabajamos desde una idea sencilla: escuchar primero, pensar estratégicamente y crear soluciones que tengan sentido para las personas y para el negocio.</p><div class="features"><div class="feature"><b>✓</b><span>Atención personalizada</span></div><div class="feature"><b>✓</b><span>Comunicación transparente</span></div><div class="feature"><b>✓</b><span>Soluciones a tu medida</span></div><div class="feature"><b>✓</b><span>Enfoque en resultados</span></div></div></div></div></section>
+<section class="section" id="contacto"><div class="container contact-grid"><div class="contact-copy"><span class="kicker">EL SIGUIENTE PASO</span><h2>Cuéntanos qué quieres construir.</h2><p>Completa el formulario y prepara un mensaje para nuestro equipo. Nos encantará conocer tu idea.</p><div class="contact-item"><span class="chip-icon">✉</span><span><b>Correo electrónico</b>hola@tuempresa.com (ejemplo)</span></div><div class="contact-item"><span class="chip-icon">◷</span><span><b>Horario de atención</b>Lunes a viernes · 9:00 a. m. – 5:00 p. m.</span></div><div class="contact-item"><span class="chip-icon">⌖</span><span><b>Modalidad</b>Atención local y a distancia</span></div></div>
+<form id="contactForm"><div class="form-heading"><h3>Empecemos una conversación.</h3><p>Los campos con * son obligatorios.</p></div><div class="form-row"><div class="field"><label for="name">Nombre completo *</label><input id="name" name="name" autocomplete="name" required placeholder="¿Cómo te llamas?"></div><div class="field"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="tu@correo.com"></div></div>
+<div class="field"><label for="service">Servicio de interés</label><select id="service" name="service"><option>Consulta general</option><option>Consultoría estratégica</option><option>Organización inteligente</option><option>Marca y presencia digital</option><option>Otro servicio</option></select></div><div class="field"><label for="message">Cuéntanos sobre tu proyecto *</label><textarea id="message" name="message" required placeholder="¿Qué te gustaría lograr?"></textarea></div><button class="btn" type="submit">Preparar mi mensaje ↗</button><p class="form-note">Demostración: no se guardan datos en este sitio. El formulario prepara un correo en tu aplicación de email.</p><div class="status" id="formStatus" role="status" aria-live="polite"></div></form>
+</div></section>
+<section class="cta"><div class="container cta-inner"><div><h2>¿Listo para dar el siguiente paso?</h2><p>Una buena conversación puede cambiar el rumbo de una gran idea.</p></div><a class="btn btn-violet" href="#contacto">Conectemos ↗</a></div></section>
+</main>
+<footer><div class="container footer-inner"><span>© <span id="year"></span> NOVA Business Studio · Sitio de ejemplo</span><a href="#inicio">Volver al inicio ↑</a></div></footer>
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const menuToggle=document.getElementById("menuToggle"),navLinks=document.getElementById("navLinks");
+menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(open));menuToggle.textContent=open?"✕ Cerrar":"☰ Menú"});
+navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{navLinks.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");menuToggle.textContent="☰ Menú"}));
+// Cambia esta dirección por el correo real antes de publicar el sitio.
+const EMAIL_DESTINO="hola@tuempresa.com",form=document.getElementById("contactForm"),status=document.getElementById("formStatus");
+form.addEventListener("submit",event=>{event.preventDefault();if(!form.reportValidity())return;const d=new FormData(form),name=String(d.get("name")).trim(),email=String(d.get("email")).trim(),service=String(d.get("service")).trim(),message=String(d.get("message")).trim();const subject=encodeURIComponent("Consulta desde NOVA — "+name),body=encodeURIComponent("Nombre: "+name+"\nCorreo: "+email+"\nServicio: "+service+"\n\nMensaje:\n"+message);status.textContent="Se intentará abrir tu aplicación de correo. Revisa el destinatario y envía el mensaje desde allí.";status.classList.add("show");window.location.href="mailto:"+EMAIL_DESTINO+"?subject="+subject+"&body="+body});
+</script>
+</body></html>
